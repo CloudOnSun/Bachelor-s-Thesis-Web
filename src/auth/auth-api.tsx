@@ -2,7 +2,7 @@ import axios from "axios";
 import {config} from "../core";
 import {User} from "../types/User";
 
-const authUrl = `${process.env.REACT_APP_API_URL}/authenticate`
+const authUrl = `${process.env.REACT_APP_API_URL}/auth/login`
 
 export interface AuthProps {
     data: {

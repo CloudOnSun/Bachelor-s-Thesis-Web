@@ -1,6 +1,7 @@
 import RfsList from "./RfsList";
 import {useState} from "react";
 import {Box, Button, Modal, Typography} from "@mui/material";
+import RfsForm from "./RfsForm";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -21,6 +22,7 @@ function Home() {
     return (
         <div>
             <h1>Home</h1>
+            <RfsForm></RfsForm>
             <RfsList></RfsList>
             <Button style={{position: "absolute", top: 10, right: 10}} onClick={handleOpen}>Info</Button>
             <Modal

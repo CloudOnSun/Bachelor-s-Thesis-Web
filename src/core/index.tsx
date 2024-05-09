@@ -13,5 +13,13 @@ export const authConfig = (token?: string) => ({
     }
 });
 
+export const fileConfig = (token?: string) => ({
+   headers: {
+       'Content-Type': 'multipart/form-data',
+       'Access-Control-Allow-Origin': '*',
+       Authorization: `Bearer ${token}`,
+   }
+});
+
 export const getLogger: (tag: string) => (...args: any) => void =
     tag => (...args) => console.log(tag, ...args);
