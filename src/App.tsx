@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {AuthProvider} from "./auth/AuthProvider";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import FrontendRoutes from "./types/FrontendRoutes";

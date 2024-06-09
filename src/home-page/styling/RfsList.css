@@ -1,0 +1,117 @@
+.rfs-list-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: auto;
+    background: linear-gradient(135deg, #f2e6d9, #ffffff);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rfs-list-scrollable {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 20px;
+}
+
+.rfs-test-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.rfs-test-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rfs-list-item {
+    transition: background-color 0.3s ease, border-left 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.rfs-list-item:hover {
+    background-color: #f2e6d9;
+    border-left: 4px solid #5d4037;
+}
+
+.rfs-list-item-text {
+    margin-right: 16px;
+    color: #5d4037;
+}
+
+.rfs-list-predict-button {
+    margin-right: 16px;
+    margin-bottom: 16px;
+    background-color: #efebe9;
+    color: #5d4037;
+    border-color: #5d4037;
+}
+
+.rfs-list-predict-button:hover {
+    background-color: #d7ccc8;
+    border-color: #5d4037;
+}
+
+.rfs-list-alert {
+    margin-top: 16px;
+}
+
+.rfs-list-toggle-container {
+    margin-top: 16px;
+}
+
+.rfs-list-toggle-row {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.rfs-list-toggle-text {
+    cursor: pointer;
+    margin-right: 4px;
+    transition: color 0.3s ease;
+    color: #5d4037;
+}
+
+.rfs-list-toggle-text:hover {
+    color: #3e2723;
+}
+
+.rfs-list-toggle-icon {
+    padding: 8px;
+}
+
+.rfs-list-collapse {
+    padding: 16px;
+    margin-top: 16px;
+    background-color: #efebe9;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.rfs-list-logout-button:hover {
+    background-color: #d7ccc8;
+}
+
+.prediction-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.crack-info {
+    margin-right: 16px;
+}
+
+.cost-info {
+    font-weight: bold;
+    color: #6d4c41;
+}

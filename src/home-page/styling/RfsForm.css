@@ -1,0 +1,44 @@
+.file-upload-form-container {
+    padding: 30px;
+    max-width: 600px;
+    margin: 30px auto;
+    background: linear-gradient(135deg, #f2e6d9, #ffffff);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.file-upload-form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #8d6e63;
+    font-weight: bold;
+}
+
+.file-upload-form-field {
+    margin: 20px 0;
+}
+
+.file-upload-text-field .MuiInputBase-root {
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
+.file-upload-input {
+    display: block;
+    padding: 10px 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.file-upload-submit-button {
+    width: 100%;
+    background: linear-gradient(135deg, #a1887f, #5d4037);
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+.file-upload-submit-button:hover {
+    background-color: #795548;
+    transform: scale(1.05);
+}

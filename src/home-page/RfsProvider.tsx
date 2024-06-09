@@ -8,6 +8,7 @@ export interface RfsState {
     allRfs?: RfsWithDamages[],
     fetching: boolean,
     fetchingError?: Error | null,
+    getRfs?: () => void,
 }
 
 interface ActionProps {
@@ -50,7 +51,7 @@ export const RfsProvider: React.FC<RfsProviderProps> = ({children} : RfsProvider
 
     useEffect(getRfsEffect, [authenticationToken])
 
-    const value = { allRfs, fetching, fetchingError }
+    const value = { allRfs, fetching, fetchingError, getRfs: getRfsEffect }
     return (
         <RfsContext.Provider value={value}>
             {children}
@@ -73,7 +74,9 @@ export const RfsProvider: React.FC<RfsProviderProps> = ({children} : RfsProvider
                 let rfsPayload = await getAllRfs(authenticationToken);
                 console.log(rfsPayload.data)
                 if (!canceled) {
-                    dispatch({type: FETCH_RFS_SUCCEEDED, payload: {allRfs: rfsPayload.data}})
+                    dispatch({type: FETCH_RFS_SUCCEEDED, payload: {allRfs: rfsPayload.data
+                                .sort((a: RfsWithDamages, b: RfsWithDamages) =>
+                                {return a.createdAt > b.createdAt ? -1 : 1})}})
                 }
             }
             catch (error) {

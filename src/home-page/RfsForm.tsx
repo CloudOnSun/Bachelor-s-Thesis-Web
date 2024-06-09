@@ -1,12 +1,17 @@
 import React, {useContext, useState} from 'react';
-import {Button, TextField, Input, Typography, FormControl, InputLabel} from '@mui/material';
+import {Button, TextField, Input, Typography, FormControl, InputLabel, Alert} from '@mui/material';
 import {addRfs} from "./home-page-api";
 import {AuthContext} from "../auth/AuthProvider";
+import {RfsContext} from "./RfsProvider";
+import "./styling/RfsForm.css";
 
-function FileUploadForm() {
+function RfsForm() {
     const {authenticationToken} = useContext(AuthContext);
+    const {getRfs} = useContext(RfsContext);
     const [name, setName] = useState('');
     const [file, setFile] = useState(null);
+    const [showAlert, setShowAlert] =
+        useState<boolean>(false);
 
     const handleNameChange = (event: any) => {
         setName(event.target.value);
@@ -26,44 +31,60 @@ function FileUploadForm() {
 
         const response = await addRfs(authenticationToken, name, file);
         console.log(response)
+        if (getRfs) {
+            getRfs()
+        }
+        ;
 
         // Reset form
         setName('');
         setFile(null);
+        setShowAlert(true);
     };
 
     return (
-        <div>
-            <Typography variant="h6" gutterBottom>
-                Upload a file of frequencies to start diagnosing
+        <div className="file-upload-form-container">
+            <Typography variant="h6" gutterBottom className="file-upload-form-title">
+                Upload a file with RFS for the first 8 modes to start diagnosing.
             </Typography>
             <form onSubmit={handleSubmit} noValidate autoComplete="off">
-                <div style={{margin: '20px 0'}}>
+                <div className="file-upload-form-field">
                     <TextField
                         label="Nickname of the test"
                         variant="outlined"
                         fullWidth
                         value={name}
                         onChange={handleNameChange}
+                        className="file-upload-text-field"
                     />
                 </div>
-                <div style={{margin: '20px 0'}}>
+                <div className="file-upload-form-field">
                     <FormControl fullWidth>
                         <Input
                             id="file-upload"
                             type="file"
                             onChange={handleFileChange}
                             inputProps={{'aria-label': 'Upload File'}}
-                            style={{display: 'block', padding: '10px 0'}}
+                            className="file-upload-input"
                         />
                     </FormControl>
                 </div>
-                <Button type="submit" variant="contained" color="primary">
+                <Button type="submit" variant="contained" color="primary" className="file-upload-submit-button">
                     Submit
                 </Button>
             </form>
+            {showAlert &&
+                <Alert
+                    variant="filled"
+                    severity="info"
+                    onClose={() => setShowAlert(false)}
+                    className="rfs-list-alert"
+                >
+                    RFS Test added
+                </Alert>
+            }
         </div>
     );
 }
 
-export default FileUploadForm;
+export default RfsForm;

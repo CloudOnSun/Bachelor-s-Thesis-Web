@@ -1,5 +1,6 @@
 export type RFS = {
     id: number,
+    testName: string,
     createdAt: Date,
     mode1: number | null,
     mode2: number | null,

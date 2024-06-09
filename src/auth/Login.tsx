@@ -4,6 +4,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {Preferences} from "@capacitor/preferences";
 import TextField from "@mui/material/TextField";
 import FrontendRoutes from "../types/FrontendRoutes";
+import "./styling/Login.css";
 
 function Login() {
     const navigate = useNavigate()
@@ -48,15 +49,13 @@ function Login() {
 
 
     useEffect(() => {
-        setError(authenticationError ? authenticationError.message : "")
+        setError(authenticationError ? "Authentication Failed" : "")
     }, [authenticationError]);
 
     return (
-
-        <div className="background-container">
-            <h1>Damage Assesment Application</h1>
+        <body className="background-container">
+            <h1>Beam Damage Detector</h1>
             <div className="container">
-
                 <div className="row">
                     <div className="col-12">
                         <form onSubmit={validateForm} className="loginForm">
@@ -82,15 +81,15 @@ function Login() {
                                 margin="normal"
                                 InputProps={{classes: {root: 'mui-input-root'}}}
                             />
-                            <button className="butonLogin" type="submit">Login</button>
-                            <span>{error}</span>
+                            <button className="buttonLogin" type="submit">Login</button>
+                            <span className="error-message">{error}</span>
                         </form>
                     </div>
                 </div>
             </div>
-
-        </div>
+        </body>
     );
+
 }
 
 export default Login;

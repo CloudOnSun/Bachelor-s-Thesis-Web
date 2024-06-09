@@ -1,7 +1,12 @@
 import RfsList from "./RfsList";
-import {useState} from "react";
+import {useCallback, useContext, useState} from "react";
 import {Box, Button, Modal, Typography} from "@mui/material";
 import RfsForm from "./RfsForm";
+import "./styling/Home.css";
+import {LogoutRounded} from "@mui/icons-material";
+import FrontendRoutes from "../types/FrontendRoutes";
+import {useNavigate} from "react-router-dom";
+import {AuthContext} from "../auth/AuthProvider";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -17,21 +22,37 @@ const style = {
 
 function Home() {
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+    const {logout} = useContext(AuthContext);
+    const handleLogout = useCallback(async () => {
+        logout?.();
+        navigate(FrontendRoutes.LOGIN);
+    }, [logout, navigate]);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     return (
-        <div>
-            <h1>Home</h1>
-            <RfsForm></RfsForm>
-            <RfsList></RfsList>
-            <Button style={{position: "absolute", top: 10, right: 10}} onClick={handleOpen}>Info</Button>
+        <div className="home-container">
+            <Typography variant="h3" align="center" gutterBottom className="home-title">
+                Beam Damage Detector
+            </Typography>
+            <RfsForm/>
+            <RfsList />
+            <Button style={{position: "absolute", top: 10, right: 10}} onClick={handleOpen} className="home-info-button">
+                Info
+            </Button>
+            <div className="rfs-list-logout-container">
+                <Button variant="outlined" startIcon={<LogoutRounded/>} onClick={handleLogout}
+                        className="rfs-list-logout-button">
+                    Log Out
+                </Button>
+            </div>
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box className="modal-box">
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         What is RFS?
                     </Typography>
